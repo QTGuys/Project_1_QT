@@ -20,6 +20,8 @@ SOURCES += \
     componentshape.cpp \
     componenttransform.cpp \
     gameobject.cpp \
+    hierarchy.cpp \
+    inspector.cpp \
     main.cpp \
     mainwindow.cpp \
     sceneview.cpp
@@ -29,11 +31,19 @@ HEADERS += \
     componentshape.h \
     componenttransform.h \
     gameobject.h \
+    hierarchy.h \
+    inspector.h \
     mainwindow.h \
-    sceneview.h
+    sceneview.h \
+    transform.h
 
 FORMS += \
-    mainwindow.ui
+    hierarchy.ui \
+    mainwindow.ui \
+    mesh.ui \
+    transform.ui
+
+CONFIG += console
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
