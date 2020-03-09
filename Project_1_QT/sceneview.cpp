@@ -29,6 +29,7 @@ void SceneView::paintEvent(QPaintEvent *event)
 
     if (currGO)
     {
+
         brush.setColor(currGO->shape->fillColor);
         pen.setWidth(4);
         pen.setColor(currGO->shape->borderColor);

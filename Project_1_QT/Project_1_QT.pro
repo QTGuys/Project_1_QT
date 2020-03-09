@@ -34,10 +34,10 @@ HEADERS += \
     hierarchy.h \
     inspector.h \
     mainwindow.h \
-    sceneview.h \
-    transform.h
+    sceneview.h
 
 FORMS += \
+    general_inspector.ui \
     hierarchy.ui \
     mainwindow.ui \
     mesh.ui \

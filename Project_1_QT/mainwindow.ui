@@ -13,16 +13,31 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>999</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuCreate_Scene">
+    <property name="title">
+     <string>Scene</string>
+    </property>
+    <addaction name="actionCreate_Scene"/>
+    <addaction name="actionC"/>
+    <addaction name="actionSave_Scene"/>
+   </widget>
+   <widget class="QMenu" name="menuExit">
+    <property name="title">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <addaction name="menuCreate_Scene"/>
+   <addaction name="menuExit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="dock_hierarchy">
@@ -37,6 +52,41 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_3"/>
   </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionCreate_Scene"/>
+   <addaction name="actionC"/>
+   <addaction name="actionSave_Scene"/>
+   <addaction name="actionClose_Scene"/>
+  </widget>
+  <action name="actionCreate_Scene">
+   <property name="text">
+    <string>Create Scene</string>
+   </property>
+  </action>
+  <action name="actionC">
+   <property name="text">
+    <string>Open Scene</string>
+   </property>
+  </action>
+  <action name="actionClose_Scene">
+   <property name="text">
+    <string>Close Scene</string>
+   </property>
+  </action>
+  <action name="actionSave_Scene">
+   <property name="text">
+    <string>Save Scene</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

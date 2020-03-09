@@ -6,6 +6,7 @@
 namespace Ui { class MainWindow; }
 class Hierarchy;
 class Inspector;
+class SceneView;
 
 class MainWindow : public QMainWindow
 {
@@ -20,5 +21,6 @@ private:
 
     Hierarchy* hierarchy;
     Inspector* inspector;
+    SceneView* sceneView;
 };
 #endif // MAINWINDOW_H
