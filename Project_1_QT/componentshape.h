@@ -5,7 +5,7 @@
 #include <QColor>
 #include <QPen>
 
-enum Shape{
+enum shapeType{
     NONE,
     SPHERE,
     RECTANGLE,
@@ -16,10 +16,11 @@ class ComponentShape : public Component
 {
 public:
     ComponentShape();
+    ComponentShape(GameObject*);
 
     float size=0.0f;
 
-    Shape shape = NONE;
+    shapeType shape = NONE;
 
     QColor fillColor=QColor::fromRgb(0.0f,0.0f,0.0f);
     QColor borderColor = QColor::fromRgb(0.0f,0.0f,0.0f);

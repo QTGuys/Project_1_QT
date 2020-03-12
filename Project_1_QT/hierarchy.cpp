@@ -1,5 +1,9 @@
 #include "hierarchy.h"
 #include "ui_hierarchy.h"
+#include "gameobject.h"
+
+#include "componentshape.h"
+#include "componenttransform.h"
 
 Hierarchy::Hierarchy(QWidget *parent) :
     QWidget(parent),
@@ -20,21 +24,26 @@ Hierarchy::~Hierarchy()
 
 void Hierarchy::onAddEntity(int entity_type)
 {
-    std::string name;
+    GameObject* new_go = new GameObject();
+    new_go->shape = new ComponentShape(new_go);
+    new_go->transform = new ComponentTransform(new_go);
+
     switch (entity_type) {
-    case 0:
-        return;
     case 1:
-        name = "Circle";
+        new_go->name = "Circle";
+        new_go->shape->shape = shapeType::SPHERE;
         break;
    case 2:
-        name = "Polygon";
+        new_go->name = "Polygon";
+        new_go->shape->shape = shapeType::RECTANGLE;
         break;
    case 3:
-        name = "Background";
+        new_go->name = "Triangle";
+        new_go->shape->shape = shapeType::TRIANGLE;
         break;
     }
-    ui->list_widget->addItem(name.c_str());
+    emit newEntity(new_go);
+    ui->list_widget->addItem(new_go->name.c_str());
 }
 
 void Hierarchy::onRemoveEntity()
@@ -45,6 +54,6 @@ void Hierarchy::onRemoveEntity()
 void Hierarchy::onEntitySelected(int row)
 {
 
-    emit entitySelected(row);
+    //emit entitySelected(row);
 }
 

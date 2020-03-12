@@ -19,10 +19,13 @@ public:
 public:
 
     GameObject* currGO = nullptr;
+    std::vector<GameObject*> gameobjects;
 
 signals:
+    void goSelected(GameObject* go);
 
 public slots:
+    void entitySelected(int row);
 private:
 
     void paintEvent(QPaintEvent *event) override;

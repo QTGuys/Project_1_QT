@@ -8,6 +8,9 @@ namespace Ui{
         class Mesh;
         class GeneralInspector;
 }
+
+class GameObject;
+
 class Inspector : public QWidget
 {
     Q_OBJECT
@@ -17,6 +20,7 @@ public:
     ~Inspector();
 public slots:
     void onEntitySelected(int row);
+    void onNewEntity(GameObject* go);
 private:
     Ui::Transform *uiTransform;
     Ui::Mesh* uiMesh;

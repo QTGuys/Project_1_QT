@@ -3,6 +3,7 @@
 #include "ui_mesh.h"
 #include "ui_general_inspector.h"
 #include <QVBoxLayout>
+#include "gameobject.h"
 
 Inspector::Inspector(QWidget* parent):QWidget (parent),uiTransform(new Ui::Transform),uiMesh(new Ui::Mesh), uiGeneralInspector(new Ui::GeneralInspector)
 {
@@ -29,4 +30,9 @@ Inspector::~Inspector()
 void Inspector::onEntitySelected(int row)
 {
     printf(std::to_string(row).data());
+}
+
+void Inspector::onNewEntity(GameObject *go)
+{
+    printf(go->name.c_str());
 }

@@ -7,6 +7,8 @@ namespace Ui {
 class Hierarchy;
 }
 
+class GameObject;
+
 class Hierarchy : public QWidget
 {
     Q_OBJECT
@@ -16,12 +18,14 @@ public:
     ~Hierarchy();
 
 signals:
-    void entitySelected(int entity_id);
+    void entitySelected(GameObject* go);
+    void newEntity(GameObject* go);
 
 public slots:
     void onAddEntity(int entity_type);
     void onRemoveEntity();
     void onEntitySelected(int row);
+
 private:
     Ui::Hierarchy *ui;
 };

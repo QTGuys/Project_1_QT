@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent)
    QVBoxLayout* layout = new QVBoxLayout();
    layout->addWidget(sceneView);
    uiMainWindow->centralWidget->setLayout(layout);
+
+   connect(hierarchy,SIGNAL(newEntity(GameObject*)),inspector,SLOT(onNewEntity(GameObject*)));
 }
 
 MainWindow::~MainWindow()

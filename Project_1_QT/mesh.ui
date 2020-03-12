@@ -68,7 +68,17 @@
         <widget class="QComboBox" name="comboMesh">
          <item>
           <property name="text">
-           <string>mesh</string>
+           <string>Circle</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rectangle</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Triangle</string>
           </property>
          </item>
         </widget>
@@ -76,13 +86,13 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QSpinBox" name="spinBox"/>
+          <widget class="QSpinBox" name="sr"/>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_2"/>
+          <widget class="QSpinBox" name="sg"/>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_3"/>
+          <widget class="QSpinBox" name="sb"/>
          </item>
         </layout>
        </item>
@@ -95,21 +105,21 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QSpinBox" name="spinBox_4"/>
+          <widget class="QSpinBox" name="fr"/>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_6"/>
+          <widget class="QSpinBox" name="fg"/>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_5"/>
+          <widget class="QSpinBox" name="fb"/>
          </item>
         </layout>
        </item>
        <item>
-        <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+        <widget class="QDoubleSpinBox" name="thickness"/>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="style">
          <item>
           <property name="text">
            <string>Solid</string>

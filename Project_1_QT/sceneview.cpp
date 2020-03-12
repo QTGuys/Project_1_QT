@@ -21,6 +21,11 @@ QSize SceneView::minimumSizeHint() const
     return QSize(64,64);
 }
 
+void SceneView::entitySelected(int row)
+{
+    emit goSelected(gameobjects[row]);
+}
+
 void SceneView::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
