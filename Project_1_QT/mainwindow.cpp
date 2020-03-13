@@ -3,10 +3,14 @@
 #include "hierarchy.h"
 #include "inspector.h"
 #include "sceneview.h"
+#include "gameobject.h"
+#include "componentshape.h"
+#include "componenttransform.h"
 
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include <QFileDialog>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -27,6 +31,13 @@ MainWindow::MainWindow(QWidget *parent)
    uiMainWindow->centralWidget->setLayout(layout);
 
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),inspector,SLOT(onNewEntity(GameObject*)));
+
+   sceneView->currGO=new GameObject();
+   sceneView->currGO->shape->shape=SPHERE;
+   sceneView->currGO->shape->size=64.0f;
+   sceneView->currGO->shape->fillColor=QColor::fromRgb(255,255,255);
+   sceneView->currGO->transform->position=QVector2D(0,0);
+   sceneView->currGO->transform->scale=QVector2D(1,2);
 }
 
 MainWindow::~MainWindow()
@@ -34,5 +45,6 @@ MainWindow::~MainWindow()
     delete uiMainWindow;
     delete hierarchy;
     delete inspector;
+    delete sceneView;
 }
 

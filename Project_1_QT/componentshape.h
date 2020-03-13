@@ -18,7 +18,7 @@ public:
     ComponentShape();
     ComponentShape(GameObject*);
 
-    float size=0.0f;
+    float size=1.0f;
 
     shapeType shape = NONE;
 
