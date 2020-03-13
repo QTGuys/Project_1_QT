@@ -12,6 +12,7 @@ class SceneView : public QWidget
 public:
 
     explicit SceneView(QWidget *parent = nullptr);
+    ~SceneView();
 
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
@@ -26,6 +27,8 @@ signals:
 
 public slots:
     void entitySelected(int row);
+    void onNewEntity(GameObject* go);
+
 private:
 
     void paintEvent(QPaintEvent *event) override;

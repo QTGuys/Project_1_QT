@@ -18,11 +18,9 @@ public:
     ComponentShape();
     ComponentShape(GameObject*);
 
-    float size=1.0f;
-
     shapeType shape = NONE;
 
-    QColor fillColor=QColor::fromRgb(0.0f,0.0f,0.0f);
+    QColor fillColor=QColor::fromRgb(255.0f,255.0f,255.0f);
     QColor borderColor = QColor::fromRgb(0.0f,0.0f,0.0f);
 
     int penWidth =0;

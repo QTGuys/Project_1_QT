@@ -14,7 +14,7 @@ Hierarchy::Hierarchy(QWidget *parent) :
 //    connect(ui->add_entity, SIGNAL(clicked()),this,SLOT(onAddEntity()));
 //    connect(ui->remove_entity, SIGNAL(clicked()),this,SLOT(onRemoveEntity()));
 //    connect(ui->listWidget, SIGNAL(currentRowChanged(int)),this,SLOT(onEntitySelected(int)));
-        connect(ui->add_object,SIGNAL(activated(int)),this,SLOT(onAddEntity(int)));
+      connect(ui->add_object,SIGNAL(activated(int)),this,SLOT(onAddEntity(int)));
 }
 
 Hierarchy::~Hierarchy()
@@ -25,8 +25,6 @@ Hierarchy::~Hierarchy()
 void Hierarchy::onAddEntity(int entity_type)
 {
     GameObject* new_go = new GameObject();
-    new_go->shape = new ComponentShape(new_go);
-    new_go->transform = new ComponentTransform(new_go);
 
     switch (entity_type) {
     case 1:

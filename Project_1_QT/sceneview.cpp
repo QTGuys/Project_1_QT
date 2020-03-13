@@ -22,6 +22,12 @@ QSize SceneView::minimumSizeHint() const
     return QSize(64,64);
 }
 
+void SceneView::onNewEntity(GameObject *go)
+{
+    gameobjects.push_back(go);
+    this->update();
+}
+
 void SceneView::entitySelected(int row)
 {
     emit goSelected(gameobjects[row]);
@@ -49,51 +55,68 @@ void SceneView::paintEvent(QPaintEvent *event)
     std::cout<<"LA Y de la pantalla"<<std::endl;
     std::cout<<screenCenter.y()<<std::endl;
 
-    if (currGO)
+    for(int i = 0; i < gameobjects.size() && gameobjects[i]; ++i)
     {
         //Color Stuff
-        brush.setColor(currGO->shape->fillColor);
+        brush.setColor(gameobjects[i]->shape->fillColor);
         pen.setWidth(4);
-        pen.setColor(currGO->shape->borderColor);
-        pen.setStyle(currGO->shape->style);
+        pen.setColor(gameobjects[i]->shape->borderColor);
+        pen.setStyle(gameobjects[i]->shape->style);
         painter.setBrush(brush);
         painter.setPen(pen);
 
         //Position Stuff
-        int radius = currGO->shape->size;
+        int radius = gameobjects[i]->transform->size;
 
-        int rWidth = radius * 2 * currGO->transform->scale.x();
-        int rHeight = radius * 2 * currGO->transform->scale.y();
+        int rWidth = radius * 2 * gameobjects[i]->transform->scale.x();
+        int rHeight = radius * 2 * gameobjects[i]->transform->scale.y();
 
-        QVector2D objCenter={(radius*currGO->transform->scale.x()),
-                             (radius*currGO->transform->scale.y())};
+        QVector2D objCenter={(radius*gameobjects[i]->transform->scale.x()),
+                             (radius*gameobjects[i]->transform->scale.y())};
 
-        int x = currGO->transform->position.x()+screenCenter.x()-objCenter.x();
-        int y = currGO->transform->position.y()+screenCenter.y()-objCenter.y();
+        int x = gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x();
+        int y = gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y();
 
         std::cout<<"LA X"<<std::endl;
         std::cout<<x<<std::endl;
         std::cout<<"LA Y"<<std::endl;
         std::cout<<y<<std::endl;
 
-        switch (currGO->shape->shape)
+        QRect objectRect(x,y,rWidth,rHeight);
+
+        switch (gameobjects[i]->shape->shape)
         {
         case NONE:
             break;
 
         case SPHERE:
         {
-            QRect circleRect(x,y,rWidth,rHeight);
-            painter.drawEllipse(circleRect);
+            painter.drawEllipse(objectRect);
 
             break;
         }
         case RECTANGLE:
+        {
+            painter.drawRect(objectRect);
             break;
-
+        }
         case TRIANGLE:
             break;
 
         }
     }
+}
+
+SceneView::~SceneView()
+{
+    for(int i = 0; i < gameobjects.size(); ++i)
+    {
+        if(gameobjects[i])
+        {
+            delete gameobjects[i];
+            gameobjects[i]=nullptr;
+        }
+    }
+
+    gameobjects.clear();
 }

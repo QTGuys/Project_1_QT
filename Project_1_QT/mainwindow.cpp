@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
    uiMainWindow->centralWidget->setLayout(layout);
 
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),inspector,SLOT(onNewEntity(GameObject*)));
+   connect(hierarchy,SIGNAL(newEntity(GameObject*)),sceneView,SLOT(onNewEntity(GameObject*)));
 
    sceneView->currGO=new GameObject();
    sceneView->currGO->shape->shape=SPHERE;
