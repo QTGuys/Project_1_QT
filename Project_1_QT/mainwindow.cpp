@@ -32,13 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
 
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),inspector,SLOT(onNewEntity(GameObject*)));
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),sceneView,SLOT(onNewEntity(GameObject*)));
-
-   sceneView->currGO=new GameObject();
-   sceneView->currGO->shape->shape=SPHERE;
-   sceneView->currGO->shape->size=64.0f;
-   sceneView->currGO->shape->fillColor=QColor::fromRgb(255,255,255);
-   sceneView->currGO->transform->position=QVector2D(0,0);
-   sceneView->currGO->transform->scale=QVector2D(1,2);
 }
 
 MainWindow::~MainWindow()

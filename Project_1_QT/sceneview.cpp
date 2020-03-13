@@ -2,10 +2,12 @@
 #include "gameobject.h"
 #include "componenttransform.h"
 #include "componentshape.h"
+
 #include <QPainter>
 #include <QBrush>
 #include <QPen>
-#include <iostream>
+#include <QFile>
+#include <QXmlStreamWriter>
 
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
@@ -26,6 +28,7 @@ void SceneView::onNewEntity(GameObject *go)
 {
     gameobjects.push_back(go);
     this->update();
+    SaveScene();
 }
 
 void SceneView::entitySelected(int row)
@@ -50,11 +53,6 @@ void SceneView::paintEvent(QPaintEvent *event)
 
     QVector2D screenCenter ={rect().width()/2.0f,rect().height()/2.0f};
 
-    std::cout<<"LA X de la pantalla"<<std::endl;
-    std::cout<<screenCenter.x()<<std::endl;
-    std::cout<<"LA Y de la pantalla"<<std::endl;
-    std::cout<<screenCenter.y()<<std::endl;
-
     for(int i = 0; i < gameobjects.size() && gameobjects[i]; ++i)
     {
         //Color Stuff
@@ -76,11 +74,6 @@ void SceneView::paintEvent(QPaintEvent *event)
 
         int x = gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x();
         int y = gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y();
-
-        std::cout<<"LA X"<<std::endl;
-        std::cout<<x<<std::endl;
-        std::cout<<"LA Y"<<std::endl;
-        std::cout<<y<<std::endl;
 
         QRect objectRect(x,y,rWidth,rHeight);
 
@@ -120,3 +113,39 @@ SceneView::~SceneView()
 
     gameobjects.clear();
 }
+
+//https://gist.github.com/lamprosg/2133804
+void SceneView::SaveScene()
+{
+    QFile file("Scenes/scene.xml");
+    file.open(QIODevice::WriteOnly);
+
+
+    QXmlStreamWriter xml(&file);
+    xml.setAutoFormatting(true);
+
+    xml.writeStartDocument();
+    xml.writeStartElement("Scene");
+
+    for(int i=0; i < gameobjects.size();++i)
+    {
+        xml.writeStartElement("GameObject");
+        xml.writeTextElement("name",gameobjects[i]->name.c_str());
+        xml.writeEndElement();
+    }
+
+    xml.writeEndElement();
+
+    file.close();
+}
+
+
+
+
+
+
+
+
+
+
+

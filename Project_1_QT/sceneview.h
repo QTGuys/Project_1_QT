@@ -22,6 +22,8 @@ public:
     GameObject* currGO = nullptr;
     std::vector<GameObject*> gameobjects;
 
+    void SaveScene();
+
 signals:
     void goSelected(GameObject* go);
 
