@@ -11,6 +11,7 @@
 #include <QXmlStreamReader>
 #include <iostream>
 #include <QFileDialog>
+#include <QMessageBox>
 
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
@@ -121,6 +122,31 @@ SceneView::~SceneView()
     }
 
     gameobjects.clear();
+}
+
+void SceneView::CallToClean()
+{
+    QMessageBox msgBox;
+    msgBox.setText("You are going to open a new Scene");
+    msgBox.setInformativeText("Do you want to save your current scene?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+
+    switch (ret)
+    {
+    case QMessageBox::Save:
+    {
+        SaveScene();
+        CleanScene();
+        break;
+    }
+    case QMessageBox::Discard:
+    {
+        CleanScene();
+        break;
+    }
+    }
 }
 
 void SceneView::CleanScene()

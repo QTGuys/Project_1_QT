@@ -22,6 +22,8 @@ public:
     GameObject* currGO = nullptr;
     std::vector<GameObject*> gameobjects;
 
+    void CleanScene();
+
 signals:
     void onGoSelected(GameObject* go);
 
@@ -31,7 +33,7 @@ public slots:
     void onTransformChanged();
     void SaveScene();
     void LoadScene();
-    void CleanScene();
+    void CallToClean();
 
 private:
 

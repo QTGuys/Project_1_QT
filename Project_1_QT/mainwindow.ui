@@ -84,7 +84,7 @@
   <action name="actionClose_Scene">
    <property name="icon">
     <iconset resource="Icons.qrc">
-     <normaloff>:/icons/Close</normaloff>:/icons/Close</iconset>
+     <normaloff>:/icons/New</normaloff>:/icons/New</iconset>
    </property>
    <property name="text">
     <string>Close Scene</string>
