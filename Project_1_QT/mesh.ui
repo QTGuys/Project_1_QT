@@ -144,6 +144,14 @@
        </item>
        <item>
         <widget class="QComboBox" name="style">
+         <property name="currentText">
+          <string>Solid</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>NoStroke</string>
+          </property>
+         </item>
          <item>
           <property name="text">
            <string>Solid</string>

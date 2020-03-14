@@ -35,6 +35,8 @@ public slots:
     void onFGChanged(int v);
     void onFBChanged(int v);
 
+    void onStyleChanged(int index);
+
 private:
     Ui::Transform *uiTransform;
     Ui::Mesh* uiMesh;

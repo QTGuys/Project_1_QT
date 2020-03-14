@@ -35,6 +35,8 @@ Inspector::Inspector(QWidget* parent):QWidget (parent),uiTransform(new Ui::Trans
     connect(uiMesh->fr,SIGNAL(valueChanged(int)),this,SLOT(onFRChanged(int)));
     connect(uiMesh->fg,SIGNAL(valueChanged(int)),this,SLOT(onFGChanged(int)));
     connect(uiMesh->fb, SIGNAL(valueChanged(int)),this,SLOT(onFBChanged(int)));
+
+    connect(uiMesh->style, SIGNAL(currentIndexChanged(int)),this,SLOT(onStyleChanged(int)));
 }
 
 Inspector::~Inspector()
@@ -136,4 +138,10 @@ void Inspector::onFBChanged(int v)
 {
     selected_go->shape->fillColor.setBlue(v);
     emit transformChanged();
+}
+
+void Inspector::onStyleChanged(int index)
+{
+    selected_go->shape->style = Qt::PenStyle(index);
+        emit transformChanged();
 }
