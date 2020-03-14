@@ -18,31 +18,37 @@
     <widget class="QListWidget" name="list_widget"/>
    </item>
    <item>
-    <widget class="QComboBox" name="add_object">
-     <property name="editable">
-      <bool>false</bool>
-     </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <property name="text">
-       <string>Add Object</string>
-      </property>
+      <widget class="QComboBox" name="add_object">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Circle</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Polygon</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Background</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
-      <property name="text">
-       <string>Circle</string>
-      </property>
+      <widget class="QPushButton" name="create">
+       <property name="text">
+        <string>Create</string>
+       </property>
+      </widget>
      </item>
-     <item>
-      <property name="text">
-       <string>Polygon</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>Background</string>
-      </property>
-     </item>
-    </widget>
+    </layout>
    </item>
   </layout>
  </widget>

@@ -26,7 +26,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="mesh_type">
+        <widget class="QLabel" name="label_6">
          <property name="text">
           <string>Type</string>
          </property>
@@ -86,13 +86,25 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QSpinBox" name="sr"/>
+          <widget class="QSpinBox" name="sr">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="sg"/>
+          <widget class="QSpinBox" name="sg">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="sb"/>
+          <widget class="QSpinBox" name="sb">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -105,13 +117,25 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QSpinBox" name="fr"/>
+          <widget class="QSpinBox" name="fr">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="fg"/>
+          <widget class="QSpinBox" name="fg">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="fb"/>
+          <widget class="QSpinBox" name="fb">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

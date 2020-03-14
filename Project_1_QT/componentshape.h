@@ -6,10 +6,10 @@
 #include <QPen>
 
 enum shapeType{
-    NONE,
     SPHERE,
     RECTANGLE,
-    TRIANGLE
+    TRIANGLE,
+    NONE
 };
 
 class ComponentShape : public Component
@@ -20,8 +20,8 @@ public:
 
     shapeType shape = NONE;
 
-    QColor fillColor=QColor::fromRgb(255.0f,255.0f,255.0f);
-    QColor borderColor = QColor::fromRgb(0.0f,0.0f,0.0f);
+    QColor fillColor=QColor::fromRgb(255,0,255);
+    QColor borderColor = QColor::fromRgb(0,0,0);
 
     int penWidth =4;
     Qt::PenStyle style = Qt::PenStyle::DashLine;

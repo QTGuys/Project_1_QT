@@ -22,7 +22,7 @@ signals:
     void newEntity(GameObject* go);
 
 public slots:
-    void onAddEntity(int entity_type);
+    void onAddEntity();
     void onRemoveEntity();
     void onEntitySelected(int row);
 

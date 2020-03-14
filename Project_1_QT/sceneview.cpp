@@ -64,9 +64,12 @@ void SceneView::paintEvent(QPaintEvent *event)
     for(int i = 0; i < gameobjects.size() && gameobjects[i]; ++i)
     {
         //Color Stuff
-        brush.setColor(gameobjects[i]->shape->fillColor);
+
+        brush.setColor(QColor::fromRgb(gameobjects[i]->shape->fillColor.rgb()));
+        printf("%i \n",QColor::fromRgb(gameobjects[i]->shape->fillColor.rgb()).red());
+      //  brush.setColor(QColor(255,255,255));
         pen.setWidth(gameobjects[i]->shape->penWidth);
-        pen.setColor(gameobjects[i]->shape->borderColor);
+        pen.setColor(gameobjects[i]->shape->borderColor.rgb());
         pen.setStyle(gameobjects[i]->shape->style);
         painter.setBrush(brush);
         painter.setPen(pen);

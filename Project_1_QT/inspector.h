@@ -28,6 +28,12 @@ public slots:
     void onScaleXChanged(double v);
     void onScaleYChanged(double v);
     void onRotationChanged(double v);
+    void onSRChanged(int v);
+    void onSGChanged(int v);
+    void onSBChanged(int v);
+    void onFRChanged(int v);
+    void onFGChanged(int v);
+    void onFBChanged(int v);
 
 private:
     Ui::Transform *uiTransform;
