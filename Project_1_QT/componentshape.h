@@ -20,7 +20,7 @@ public:
 
     shapeType shape = NONE;
 
-    QColor fillColor=QColor::fromRgb(255,0,255);
+    QColor fillColor=QColor::fromRgb(255,255,255);
     QColor borderColor = QColor::fromRgb(0,0,0);
 
     int penWidth =4;
