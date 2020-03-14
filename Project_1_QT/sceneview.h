@@ -23,6 +23,9 @@ public:
     std::vector<GameObject*> gameobjects;
 
     void SaveScene();
+    void LoadScene();
+
+    void CleanScene();
 
 signals:
     void onGoSelected(GameObject* go);
