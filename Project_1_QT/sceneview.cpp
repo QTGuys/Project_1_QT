@@ -163,6 +163,8 @@ void SceneView::CleanScene()
     gameobjects.clear();
 
     this->update();
+
+    emit onDeleteAllEntities();
 }
 
 //https://gist.github.com/lamprosg/2133804

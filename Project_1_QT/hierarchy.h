@@ -25,6 +25,7 @@ public slots:
     void onAddEntity(int entity_type);
     void onRemoveEntity();
     void onEntitySelected(int row);
+    void RemoveAllEntities();
 
 private:
     Ui::Hierarchy *ui;

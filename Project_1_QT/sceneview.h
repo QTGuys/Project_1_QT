@@ -26,6 +26,7 @@ public:
 
 signals:
     void onGoSelected(GameObject* go);
+    void onDeleteAllEntities();
 
 public slots:
     void onEntitySelected(int row);

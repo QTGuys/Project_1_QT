@@ -54,3 +54,8 @@ void Hierarchy::onEntitySelected(int row)
     emit entitySelected(row);
 }
 
+void Hierarchy::RemoveAllEntities()
+{
+    ui->list_widget->clear();
+}
+
