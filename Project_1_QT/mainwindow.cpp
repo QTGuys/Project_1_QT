@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
    connect(sceneView, SIGNAL(onGoSelected(GameObject*)),inspector,SLOT(goSelected(GameObject*)));
    connect(inspector, SIGNAL(transformChanged()),sceneView,SLOT(onTransformChanged()));
    connect(sceneView, SIGNAL(onDeleteAllEntities()),hierarchy,SLOT(RemoveAllEntities()));
+   connect(sceneView, SIGNAL(onGoSelectedList(int)),hierarchy,SLOT(onSelectFromView(int)));
 
    connect(uiMainWindow->actionSave_Scene,SIGNAL(triggered()),sceneView,SLOT(SaveScene()));
    connect(uiMainWindow->actionC,SIGNAL(triggered()),sceneView,SLOT(LoadScene()));

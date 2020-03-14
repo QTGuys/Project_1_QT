@@ -26,6 +26,7 @@ public:
 
 signals:
     void onGoSelected(GameObject* go);
+    void onGoSelectedList(int idx);
     void onDeleteAllEntities();
 
 public slots:
@@ -36,9 +37,11 @@ public slots:
     void LoadScene();
     void CallToClean();
 
+
 private:
 
     void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 };
 

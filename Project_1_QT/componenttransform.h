@@ -19,6 +19,9 @@ public:
     QVector2D scale = {1.0f,1.0f};
     //QVector2D rotation = {0.0f,0.0f};
 
+    QVector2D realPosition = {0.0f,0.0f};
+
+
 };
 
 #endif // COMPONENTTRANSFORM_H

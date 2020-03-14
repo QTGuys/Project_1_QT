@@ -12,6 +12,7 @@
 #include <iostream>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QMouseEvent>
 
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
@@ -82,10 +83,12 @@ void SceneView::paintEvent(QPaintEvent *event)
         QVector2D objCenter={(radius*gameobjects[i]->transform->scale.x()),
                              (radius*gameobjects[i]->transform->scale.y())};
 
-        int x = gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x();
+        gameobjects[i]->transform->realPosition.setX(gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x());
+        gameobjects[i]->transform->realPosition.setY(gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y());
+
         int y = gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y();
 
-        QRect objectRect(x,y,rWidth,rHeight);
+        QRect objectRect(gameobjects[i]->transform->realPosition.x(),gameobjects[i]->transform->realPosition.y(),rWidth,rHeight);
 
         switch (gameobjects[i]->shape->shape)
         {
@@ -329,6 +332,34 @@ void SceneView::LoadScene()
     }
 
     file.close();
+}
+
+void SceneView::mousePressEvent(QMouseEvent *event)
+{
+    GameObject* selectedGO=nullptr;
+    int idx=-1;
+
+    for(int i=0; i<gameobjects.size();++i)
+    {
+        int posX=gameobjects[i]->transform->realPosition.x();
+        int posY=gameobjects[i]->transform->realPosition.y();
+
+        int size=gameobjects[i]->transform->size;
+
+        if(event->x() > posX && event->x() < posX+size*2*gameobjects[i]->transform->scale.x())
+        {
+            if(event->y() > posY && event->y() < posY+size*2*gameobjects[i]->transform->scale.y())
+            {
+                selectedGO = gameobjects[i];
+                idx=i;
+            }
+        }
+    }
+
+    if(selectedGO && idx!=-1)
+    {
+        emit onGoSelectedList(idx);
+    }
 }
 
 
