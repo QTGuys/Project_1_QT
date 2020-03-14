@@ -22,21 +22,26 @@ public:
     GameObject* currGO = nullptr;
     std::vector<GameObject*> gameobjects;
 
-    void SaveScene();
-    void LoadScene();
-
     void CleanScene();
 
 signals:
     void onGoSelected(GameObject* go);
+    void onGoSelectedList(int idx);
+    void onDeleteAllEntities();
 
 public slots:
     void onEntitySelected(int row);
     void onNewEntity(GameObject* go);
     void onTransformChanged();
+    void SaveScene();
+    void LoadScene();
+    void CallToClean();
+
+
 private:
 
     void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
 
 };
 

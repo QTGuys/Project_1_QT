@@ -10,6 +10,9 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 #include <iostream>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QMouseEvent>
 
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
@@ -83,10 +86,12 @@ void SceneView::paintEvent(QPaintEvent *event)
         QVector2D objCenter={(radius*gameobjects[i]->transform->scale.x()),
                              (radius*gameobjects[i]->transform->scale.y())};
 
-        int x = gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x();
+        gameobjects[i]->transform->realPosition.setX(gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x());
+        gameobjects[i]->transform->realPosition.setY(gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y());
+
         int y = gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y();
 
-        QRect objectRect(x,y,rWidth,rHeight);
+        QRect objectRect(gameobjects[i]->transform->realPosition.x(),gameobjects[i]->transform->realPosition.y(),rWidth,rHeight);
 
         switch (gameobjects[i]->shape->shape)
         {
@@ -125,6 +130,31 @@ SceneView::~SceneView()
     gameobjects.clear();
 }
 
+void SceneView::CallToClean()
+{
+    QMessageBox msgBox;
+    msgBox.setText("You are going to open a new Scene");
+    msgBox.setInformativeText("Do you want to save your current scene?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+
+    switch (ret)
+    {
+    case QMessageBox::Save:
+    {
+        SaveScene();
+        CleanScene();
+        break;
+    }
+    case QMessageBox::Discard:
+    {
+        CleanScene();
+        break;
+    }
+    }
+}
+
 void SceneView::CleanScene()
 {
     for(int i = 0; i < gameobjects.size(); ++i)
@@ -139,12 +169,21 @@ void SceneView::CleanScene()
     gameobjects.clear();
 
     this->update();
+
+    emit onDeleteAllEntities();
 }
 
 //https://gist.github.com/lamprosg/2133804
 void SceneView::SaveScene()
 {
-    QFile file("Scenes/scene.xml");
+    QString path = QFileDialog::getSaveFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+
+    if(path.isEmpty())
+    {
+        return;
+    }
+
+    QFile file(path);
     file.open(QIODevice::WriteOnly);
 
     QXmlStreamWriter xml(&file);
@@ -218,7 +257,14 @@ void SceneView::LoadScene()
 {
     CleanScene();
 
-    QFile file("Scenes/scene.xml");
+    QString path = QFileDialog::getOpenFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+
+    if(path.isEmpty())
+    {
+        return;
+    }
+
+    QFile file(path);
     file.open(QIODevice::ReadOnly);
 
     QXmlStreamReader xmlReader(&file);
@@ -282,13 +328,41 @@ void SceneView::LoadScene()
                     std::cout<<shape->borderColor.green()<<std::endl;
 
                 }
-                //gameobjects.push_back(current);
+                gameobjects.push_back(current);
                 xmlReader.skipCurrentElement();
             }
         }
     }
 
     file.close();
+}
+
+void SceneView::mousePressEvent(QMouseEvent *event)
+{
+    GameObject* selectedGO=nullptr;
+    int idx=-1;
+
+    for(int i=0; i<gameobjects.size();++i)
+    {
+        int posX=gameobjects[i]->transform->realPosition.x();
+        int posY=gameobjects[i]->transform->realPosition.y();
+
+        int size=gameobjects[i]->transform->size;
+
+        if(event->x() > posX && event->x() < posX+size*2*gameobjects[i]->transform->scale.x())
+        {
+            if(event->y() > posY && event->y() < posY+size*2*gameobjects[i]->transform->scale.y())
+            {
+                selectedGO = gameobjects[i];
+                idx=i;
+            }
+        }
+    }
+
+    if(selectedGO && idx!=-1)
+    {
+        emit onGoSelectedList(idx);
+    }
 }
 
 
