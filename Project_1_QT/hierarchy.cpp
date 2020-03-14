@@ -61,6 +61,12 @@ void Hierarchy::onSelectFromView(int idx)
 
 void Hierarchy::RemoveAllEntities()
 {
+    ui->list_widget->reset();
     ui->list_widget->clear();
+}
+
+void Hierarchy::onAddLoadItem(std::string name)
+{
+    ui->list_widget->addItem(name.c_str());
 }
 

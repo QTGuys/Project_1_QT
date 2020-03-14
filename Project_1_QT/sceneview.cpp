@@ -68,8 +68,6 @@ void SceneView::paintEvent(QPaintEvent *event)
     {
         //Color Stuff
         brush.setColor(gameobjects[i]->shape->fillColor);
-        printf("%i \n",QColor::fromRgb(gameobjects[i]->shape->fillColor.rgb()).red());
-        //brush.setColor(QColor(255,255,255));
         pen.setWidth(gameobjects[i]->shape->penWidth);
         pen.setColor(gameobjects[i]->shape->borderColor.rgb());
         pen.setStyle(gameobjects[i]->shape->style);
@@ -196,7 +194,6 @@ void SceneView::SaveScene()
         ComponentTransform* trans = gameobjects[i]->transform;
         ComponentShape* shape = gameobjects[i]->shape;
 
-
         xml.writeStartElement("GameObject");
         xml.writeAttribute("name",gameobjects[i]->name.c_str());
 
@@ -322,12 +319,10 @@ void SceneView::LoadScene()
 
                     //Pen Style
                     shape->style=(Qt::PenStyle)shAttributes.value("penStyle").toInt();
-
-                    std::cout<<shape->fillColor.red()<<std::endl;
-                    std::cout<<shape->borderColor.green()<<std::endl;
-
                 }
                 gameobjects.push_back(current);
+                std::cout<<"Adding %s"+current->name<<std::endl;
+                //emit LoadItem(current->name);
                 xmlReader.skipCurrentElement();
             }
         }

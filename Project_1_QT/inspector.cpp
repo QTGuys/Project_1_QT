@@ -124,11 +124,8 @@ void Inspector::onFRChanged(int v)
 
 void Inspector::onFGChanged(int v)
 {
-    printf("%i \n",v);
-
     selected_go->shape->fillColor.setGreen(v);
     // selected_go->shape->fillColor.
-    printf("%i \n",selected_go->shape->fillColor.green());
     emit transformChanged();
 }
 

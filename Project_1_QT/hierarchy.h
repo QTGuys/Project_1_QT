@@ -2,6 +2,7 @@
 #define HIERARCHY_H
 
 #include <QWidget>
+#include <iostream>
 
 namespace Ui {
 class Hierarchy;
@@ -27,6 +28,7 @@ public slots:
     void onEntitySelected(int row);
     void RemoveAllEntities();
     void onSelectFromView(int idx);
+    void onAddLoadItem(std::string name);
 
 private:
     Ui::Hierarchy *ui;

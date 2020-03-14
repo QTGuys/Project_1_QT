@@ -28,6 +28,7 @@ signals:
     void onGoSelected(GameObject* go);
     void onGoSelectedList(int idx);
     void onDeleteAllEntities();
+    void LoadItem(std::string name);
 
 public slots:
     void onEntitySelected(int row);
