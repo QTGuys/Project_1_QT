@@ -22,11 +22,6 @@ public:
     GameObject* currGO = nullptr;
     std::vector<GameObject*> gameobjects;
 
-    void SaveScene();
-    void LoadScene();
-
-    void CleanScene();
-
 signals:
     void onGoSelected(GameObject* go);
 
@@ -34,6 +29,10 @@ public slots:
     void onEntitySelected(int row);
     void onNewEntity(GameObject* go);
     void onTransformChanged();
+    void SaveScene();
+    void LoadScene();
+    void CleanScene();
+
 private:
 
     void paintEvent(QPaintEvent *event) override;

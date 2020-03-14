@@ -10,6 +10,7 @@
 #include <QXmlStreamWriter>
 #include <QXmlStreamReader>
 #include <iostream>
+#include <QFileDialog>
 
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
@@ -141,7 +142,14 @@ void SceneView::CleanScene()
 //https://gist.github.com/lamprosg/2133804
 void SceneView::SaveScene()
 {
-    QFile file("Scenes/scene.xml");
+    QString path = QFileDialog::getSaveFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+
+    if(path.isEmpty())
+    {
+        return;
+    }
+
+    QFile file(path);
     file.open(QIODevice::WriteOnly);
 
     QXmlStreamWriter xml(&file);
@@ -215,7 +223,14 @@ void SceneView::LoadScene()
 {
     CleanScene();
 
-    QFile file("Scenes/scene.xml");
+    QString path = QFileDialog::getOpenFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+
+    if(path.isEmpty())
+    {
+        return;
+    }
+
+    QFile file(path);
     file.open(QIODevice::ReadOnly);
 
     QXmlStreamReader xmlReader(&file);
@@ -279,7 +294,7 @@ void SceneView::LoadScene()
                     std::cout<<shape->borderColor.green()<<std::endl;
 
                 }
-                //gameobjects.push_back(current);
+                gameobjects.push_back(current);
                 xmlReader.skipCurrentElement();
             }
         }
