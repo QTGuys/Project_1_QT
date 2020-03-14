@@ -23,7 +23,7 @@ public:
     QColor fillColor=QColor::fromRgb(255.0f,255.0f,255.0f);
     QColor borderColor = QColor::fromRgb(0.0f,0.0f,0.0f);
 
-    int penWidth =0;
+    int penWidth =4;
     Qt::PenStyle style = Qt::PenStyle::DashLine;
 
 };
