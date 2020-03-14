@@ -25,12 +25,12 @@ public:
     void SaveScene();
 
 signals:
-    void goSelected(GameObject* go);
+    void onGoSelected(GameObject* go);
 
 public slots:
-    void entitySelected(int row);
+    void onEntitySelected(int row);
     void onNewEntity(GameObject* go);
-
+    void onTransformChanged();
 private:
 
     void paintEvent(QPaintEvent *event) override;

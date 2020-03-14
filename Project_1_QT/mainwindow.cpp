@@ -32,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent)
 
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),inspector,SLOT(onNewEntity(GameObject*)));
    connect(hierarchy,SIGNAL(newEntity(GameObject*)),sceneView,SLOT(onNewEntity(GameObject*)));
+   connect(hierarchy,SIGNAL(entitySelected(int)),sceneView,SLOT(onEntitySelected(int)));
+   connect(sceneView, SIGNAL(onGoSelected(GameObject*)),inspector,SLOT(goSelected(GameObject*)));
+   connect(inspector, SIGNAL(transformChanged()),sceneView,SLOT(onTransformChanged()));
 }
 
 MainWindow::~MainWindow()

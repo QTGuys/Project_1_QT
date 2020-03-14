@@ -13,7 +13,7 @@ Hierarchy::Hierarchy(QWidget *parent) :
 
 //    connect(ui->add_entity, SIGNAL(clicked()),this,SLOT(onAddEntity()));
 //    connect(ui->remove_entity, SIGNAL(clicked()),this,SLOT(onRemoveEntity()));
-//    connect(ui->listWidget, SIGNAL(currentRowChanged(int)),this,SLOT(onEntitySelected(int)));
+      connect(ui->list_widget, SIGNAL(currentRowChanged(int)),this,SLOT(onEntitySelected(int)));
       connect(ui->add_object,SIGNAL(activated(int)),this,SLOT(onAddEntity(int)));
 }
 
@@ -51,7 +51,6 @@ void Hierarchy::onRemoveEntity()
 
 void Hierarchy::onEntitySelected(int row)
 {
-
-    //emit entitySelected(row);
+    emit entitySelected(row);
 }
 

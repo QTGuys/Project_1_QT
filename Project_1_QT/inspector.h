@@ -18,9 +18,17 @@ class Inspector : public QWidget
 public:
     explicit Inspector(QWidget *parent = nullptr);
     ~Inspector();
+signals:
+    void transformChanged();
 public slots:
-    void onEntitySelected(int row);
+   void goSelected(GameObject* go);
     void onNewEntity(GameObject* go);
+    void onPosXChanged(double v);
+    void onPosYChanged(double v);
+    void onScaleXChanged(double v);
+    void onScaleYChanged(double v);
+    void onRotationChanged(double v);
+
 private:
     Ui::Transform *uiTransform;
     Ui::Mesh* uiMesh;
@@ -29,6 +37,8 @@ private:
     QWidget* transformWidget;
     QWidget* meshWidget;
     QWidget* generalInspectorWidget;
+
+    GameObject* selected_go;
 };
 
 #endif // HIERARCHY_H

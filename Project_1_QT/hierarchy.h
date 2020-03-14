@@ -18,7 +18,7 @@ public:
     ~Hierarchy();
 
 signals:
-    void entitySelected(GameObject* go);
+    void entitySelected(int row);
     void newEntity(GameObject* go);
 
 public slots:

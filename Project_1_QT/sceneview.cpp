@@ -31,9 +31,16 @@ void SceneView::onNewEntity(GameObject *go)
     SaveScene();
 }
 
-void SceneView::entitySelected(int row)
+void SceneView::onTransformChanged()
 {
-    emit goSelected(gameobjects[row]);
+    this->update();
+}
+
+void SceneView::onEntitySelected(int row)
+{
+    GameObject* go = gameobjects[row];
+    if(go)
+        emit onGoSelected(gameobjects[row]);
 }
 
 void SceneView::paintEvent(QPaintEvent *event)

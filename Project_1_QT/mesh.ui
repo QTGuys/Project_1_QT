@@ -65,7 +65,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QComboBox" name="comboMesh">
+        <widget class="QComboBox" name="shape_type">
          <item>
           <property name="text">
            <string>Circle</string>
