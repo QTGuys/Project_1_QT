@@ -323,11 +323,11 @@ void SceneView::LoadScene()
                     //Pen Style
                     shape->style=(Qt::PenStyle)shAttributes.value("penStyle").toInt();
                 }
-                gameobjects.push_back(current);
-                std::cout<<"Adding %s"+current->name<<std::endl;
-                //emit LoadItem(current->name);
                 xmlReader.skipCurrentElement();
             }
+            gameobjects.push_back(current);
+            std::cout<<"Adding %s"+current->name<<std::endl;
+            emit LoadItem(current->name);
         }
     }
 
