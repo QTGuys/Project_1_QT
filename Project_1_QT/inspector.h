@@ -36,7 +36,7 @@ public slots:
     void onFRChanged(int v);
     void onFGChanged(int v);
     void onFBChanged(int v);
-
+    void onThicknessChanged(double v);
     void onStyleChanged(int index);
     void onShapeChanged(int index);
     void onNameChanged();
