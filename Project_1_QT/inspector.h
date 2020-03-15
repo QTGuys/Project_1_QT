@@ -21,6 +21,7 @@ public:
 signals:
     void transformChanged();
     void nameChanged();
+    void goDeleted(GameObject* go);
 public slots:
    void goSelected(GameObject* go);
     void onNewEntity(GameObject* go);

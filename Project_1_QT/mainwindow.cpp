@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
    connect(inspector, SIGNAL(nameChanged()),sceneView,SLOT(onNameChanged()));
    connect(sceneView, SIGNAL(nameChanged(std::vector<GameObject*>)),hierarchy,SLOT(onNameChanged(std::vector<GameObject*>)));
 
+   connect(inspector,SIGNAL(goDeleted(GameObject*)),hierarchy,SLOT(onGoDeleted(GameObject*)));
+   connect(inspector,SIGNAL(goDeleted(GameObject*)),sceneView,SLOT(onGoDeleted(GameObject*)));
 
 
    connect(sceneView, SIGNAL(onDeleteAllEntities()),hierarchy,SLOT(RemoveAllEntities()));

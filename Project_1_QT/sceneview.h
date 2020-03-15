@@ -40,6 +40,8 @@ public slots:
     void SaveScene();
     void LoadScene();
     void CallToClean();
+    void onGoDeleted(GameObject* go);
+
 
 
 private:

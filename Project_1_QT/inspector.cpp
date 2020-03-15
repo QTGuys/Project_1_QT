@@ -178,10 +178,12 @@ void Inspector::onNameChanged()
 
 void Inspector::onGoDelete()
 {
+    emit goDeleted(selected_go);
   //  delete selected_go;
 //     emit transformChanged();
 //     emit nameChanged();
-//    generalInspectorWidget->setVisible(false);
-//    transformWidget->setVisible(false);
-//    meshWidget->setVisible(false);
+    generalInspectorWidget->setVisible(false);
+    transformWidget->setVisible(false);
+    meshWidget->setVisible(false);
+    selected_go = nullptr;
 }

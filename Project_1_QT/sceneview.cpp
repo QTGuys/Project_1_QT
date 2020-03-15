@@ -155,6 +155,19 @@ void SceneView::CallToClean()
     }
 }
 
+void SceneView::onGoDeleted(GameObject *go)
+{
+    for(int i = 0;i<gameobjects.size();i++)
+    {
+        if(gameobjects[i] == go)
+        {
+            gameobjects.erase(gameobjects.begin()+i);
+            break;
+        }
+
+    }
+}
+
 void SceneView::CleanScene()
 {
     for(int i = 0; i < gameobjects.size(); ++i)
