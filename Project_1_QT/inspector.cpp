@@ -176,6 +176,12 @@ void Inspector::onThicknessChanged(double v)
     emit transformChanged();
 }
 
+void Inspector::onThicknessChanged(double v)
+{
+    selected_go->shape->penWidth = v;
+    emit transformChanged();
+}
+
 void Inspector::onStyleChanged(int index)
 {
     selected_go->shape->style = Qt::PenStyle(index);
