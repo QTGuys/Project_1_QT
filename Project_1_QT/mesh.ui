@@ -76,11 +76,6 @@
            <string>Rectangle</string>
           </property>
          </item>
-         <item>
-          <property name="text">
-           <string>Triangle</string>
-          </property>
-         </item>
         </widget>
        </item>
        <item>

@@ -27,6 +27,7 @@ public slots:
     void onEntitySelected(int row);
     void RemoveAllEntities();
     void onSelectFromView(int idx);
+    void onNameChanged(std::vector<GameObject*> gameobjects);
 
 private:
     Ui::Hierarchy *ui;

@@ -28,11 +28,13 @@ signals:
     void onGoSelected(GameObject* go);
     void onGoSelectedList(int idx);
     void onDeleteAllEntities();
+    void nameChanged(std::vector<GameObject*> gameobjects);
 
 public slots:
     void onEntitySelected(int row);
     void onNewEntity(GameObject* go);
     void onTransformChanged();
+    void onNameChanged();
     void SaveScene();
     void LoadScene();
     void CallToClean();

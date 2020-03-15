@@ -9,6 +9,7 @@
 
 Inspector::Inspector(QWidget* parent):QWidget (parent),uiTransform(new Ui::Transform),uiMesh(new Ui::Mesh), uiGeneralInspector(new Ui::GeneralInspector)
 {
+
     QVBoxLayout* layout = new QVBoxLayout();
     transformWidget = new QWidget;
     uiTransform->setupUi(transformWidget);
@@ -37,6 +38,14 @@ Inspector::Inspector(QWidget* parent):QWidget (parent),uiTransform(new Ui::Trans
     connect(uiMesh->fb, SIGNAL(valueChanged(int)),this,SLOT(onFBChanged(int)));
 
     connect(uiMesh->style, SIGNAL(currentIndexChanged(int)),this,SLOT(onStyleChanged(int)));
+    connect(uiGeneralInspector->name_display, SIGNAL(editingFinished()),this,SLOT(onNameChanged()));
+
+    connect(uiGeneralInspector->delete_button, SIGNAL(clicked()),this,SLOT(onGoDelete()));
+
+    connect(uiMesh->shape_type, SIGNAL(currentIndexChanged(int)),this, SLOT(onShapeChanged(int)));
+    generalInspectorWidget->setVisible(false);
+    transformWidget->setVisible(false);
+    meshWidget->setVisible(false);
 }
 
 Inspector::~Inspector()
@@ -47,7 +56,15 @@ Inspector::~Inspector()
 
 void Inspector::goSelected(GameObject* go)
 {
+    if(go)
+    {
+    generalInspectorWidget->setVisible(true);
+    transformWidget->setVisible(true);
+    meshWidget->setVisible(true);
     selected_go = go;
+
+    uiGeneralInspector->name_display->setText(go->name.c_str());
+
     uiTransform->posX->setValue(go->transform->position.x());
     uiTransform->posY->setValue(go->transform->position.y());
     uiTransform->scaleX->setValue(go->transform->scale.x());
@@ -64,6 +81,7 @@ void Inspector::goSelected(GameObject* go)
     uiMesh->fb->setValue(go->shape->borderColor.blue());
     uiMesh->thickness->setValue(go->shape->penWidth);
     uiMesh->style->setCurrentIndex(go->shape->style);
+    }
 }
 
 void Inspector::onNewEntity(GameObject *go)
@@ -143,5 +161,30 @@ void Inspector::onFBChanged(int v)
 void Inspector::onStyleChanged(int index)
 {
     selected_go->shape->style = Qt::PenStyle(index);
-        emit transformChanged();
+    emit transformChanged();
+}
+
+void Inspector::onShapeChanged(int index)
+{
+    selected_go->shape->shape = shapeType(index);
+    emit transformChanged();
+}
+
+void Inspector::onNameChanged()
+{
+    if(selected_go)
+    {
+    selected_go->name = uiGeneralInspector->name_display->text().toStdString();
+    emit nameChanged();
+    }
+}
+
+void Inspector::onGoDelete()
+{
+  //  delete selected_go;
+//     emit transformChanged();
+//     emit nameChanged();
+//    generalInspectorWidget->setVisible(false);
+//    transformWidget->setVisible(false);
+//    meshWidget->setVisible(false);
 }

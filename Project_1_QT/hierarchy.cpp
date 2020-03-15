@@ -46,7 +46,7 @@ void Hierarchy::onAddEntity()
 
 void Hierarchy::onRemoveEntity()
 {
-    ui->list_widget->takeItem( ui->list_widget->currentRow());
+    ui->list_widget->takeItem(ui->list_widget->currentRow());
 }
 
 void Hierarchy::onEntitySelected(int row)
@@ -57,6 +57,15 @@ void Hierarchy::onEntitySelected(int row)
 void Hierarchy::onSelectFromView(int idx)
 {
     ui->list_widget->setCurrentRow(idx);
+}
+
+void Hierarchy::onNameChanged(std::vector<GameObject *> gameobjects)
+{
+    ui->list_widget->clear();
+    for(auto item = gameobjects.begin();item != gameobjects.end();item++)
+    {
+        ui->list_widget->addItem((*item)->name.c_str());
+    }
 }
 
 void Hierarchy::RemoveAllEntities()

@@ -20,6 +20,7 @@ public:
     ~Inspector();
 signals:
     void transformChanged();
+    void nameChanged();
 public slots:
    void goSelected(GameObject* go);
     void onNewEntity(GameObject* go);
@@ -36,6 +37,10 @@ public slots:
     void onFBChanged(int v);
 
     void onStyleChanged(int index);
+    void onShapeChanged(int index);
+    void onNameChanged();
+
+    void onGoDelete();
 
 private:
     Ui::Transform *uiTransform;

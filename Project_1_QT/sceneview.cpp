@@ -42,9 +42,12 @@ void SceneView::onTransformChanged()
 
 void SceneView::onEntitySelected(int row)
 {
-    GameObject* go = gameobjects[row];
-    if(go)
-        emit onGoSelected(gameobjects[row]);
+    if(row >= 0)
+    {
+        GameObject* go = gameobjects[row];
+        if(go)
+            emit onGoSelected(gameobjects[row]);
+    }
 }
 
 void SceneView::paintEvent(QPaintEvent *event)
@@ -363,6 +366,11 @@ void SceneView::mousePressEvent(QMouseEvent *event)
     {
         emit onGoSelectedList(idx);
     }
+}
+
+void SceneView::onNameChanged()
+{
+    emit nameChanged(gameobjects);
 }
 
 
