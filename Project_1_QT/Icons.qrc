@@ -4,5 +4,6 @@
         <file alias="Load">Icons/Folder.png</file>
         <file alias="Close">Icons/Close.png</file>
         <file alias="New">Icons/Empty document.png</file>
+        <file alias="Icon">Icons/wow.png</file>
     </qresource>
 </RCC>
