@@ -239,7 +239,7 @@ void SceneView::CleanScene()
 //https://gist.github.com/lamprosg/2133804
 void SceneView::SaveScene()
 {
-    QString path = QFileDialog::getSaveFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+    QString path = QFileDialog::getSaveFileName(this,"Save Scene",".",tr("Xml files(*.xml)"));
 
     if(path.isEmpty())
     {

@@ -34,11 +34,6 @@
          <string>Polygon</string>
         </property>
        </item>
-       <item>
-        <property name="text">
-         <string>Background</string>
-        </property>
-       </item>
       </widget>
      </item>
      <item>
