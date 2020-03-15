@@ -29,6 +29,8 @@ signals:
     void onGoSelectedList(int idx);
     void onDeleteAllEntities();
     void nameChanged(std::vector<GameObject*> gameobjects);
+    void LoadItem(std::string name);
+
 
 public slots:
     void onEntitySelected(int row);

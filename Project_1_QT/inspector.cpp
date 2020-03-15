@@ -76,9 +76,9 @@ void Inspector::goSelected(GameObject* go)
     uiMesh->sg->setValue(go->shape->borderColor.green());
     uiMesh->sb->setValue(go->shape->borderColor.blue());
 
-    uiMesh->fr->setValue(go->shape->borderColor.red());
-    uiMesh->fg->setValue(go->shape->borderColor.green());
-    uiMesh->fb->setValue(go->shape->borderColor.blue());
+    uiMesh->fr->setValue(go->shape->fillColor.red());
+    uiMesh->fg->setValue(go->shape->fillColor.green());
+    uiMesh->fb->setValue(go->shape->fillColor.blue());
     uiMesh->thickness->setValue(go->shape->penWidth);
     uiMesh->style->setCurrentIndex(go->shape->style);
     }
@@ -144,11 +144,8 @@ void Inspector::onFRChanged(int v)
 
 void Inspector::onFGChanged(int v)
 {
-    printf("%i \n",v);
-
     selected_go->shape->fillColor.setGreen(v);
     // selected_go->shape->fillColor.
-    printf("%i \n",selected_go->shape->fillColor.green());
     emit transformChanged();
 }
 

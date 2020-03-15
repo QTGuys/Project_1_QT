@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene>
+    <GameObject name="Circle">
+        <Transform size="64.000000" posX="0.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="0" fillColor_R="0" fillColor_G="255" fillColor_B="0" borderColor_R="255" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Circle">
+        <Transform size="64.000000" posX="0.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="0" fillColor_R="0" fillColor_G="255" fillColor_B="0" borderColor_R="255" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Circle">
+        <Transform size="64.000000" posX="0.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="0" fillColor_R="0" fillColor_G="255" fillColor_B="0" borderColor_R="255" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Circle">
+        <Transform size="64.000000" posX="0.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="0" fillColor_R="0" fillColor_G="255" fillColor_B="0" borderColor_R="255" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Polygon">
+        <Transform size="64.000000" posX="100.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="1" fillColor_R="5" fillColor_G="255" fillColor_B="255" borderColor_R="255" borderColor_G="255" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Polygon">
+        <Transform size="64.000000" posX="100.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="1" fillColor_R="5" fillColor_G="255" fillColor_B="255" borderColor_R="255" borderColor_G="255" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Polygon">
+        <Transform size="64.000000" posX="100.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="1" fillColor_R="5" fillColor_G="255" fillColor_B="255" borderColor_R="255" borderColor_G="255" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+    <GameObject name="Polygon">
+        <Transform size="64.000000" posX="100.000000" posY="0.000000" scaleX="1.000000" scaleY="1.000000"/>
+        <Shape shape="1" fillColor_R="5" fillColor_G="255" fillColor_B="255" borderColor_R="255" borderColor_G="255" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+</Scene>
