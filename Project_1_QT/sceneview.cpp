@@ -69,14 +69,6 @@ void SceneView::paintEvent(QPaintEvent *event)
 
     for(int i = 0; i < gameobjects.size() && gameobjects[i]; ++i)
     {
-        //Color Stuff
-        brush.setColor(gameobjects[i]->shape->fillColor);
-        pen.setWidth(gameobjects[i]->shape->penWidth);
-        pen.setColor(gameobjects[i]->shape->borderColor.rgb());
-        pen.setStyle(gameobjects[i]->shape->style);
-        painter.setBrush(brush);
-        painter.setPen(pen);
-
         //Position Stuff
         int radius = gameobjects[i]->transform->size;
 
@@ -89,9 +81,31 @@ void SceneView::paintEvent(QPaintEvent *event)
         gameobjects[i]->transform->realPosition.setX(gameobjects[i]->transform->position.x()+screenCenter.x()-objCenter.x());
         gameobjects[i]->transform->realPosition.setY(gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y());
 
-        int y = gameobjects[i]->transform->position.y()+screenCenter.y()-objCenter.y();
-
         QRect objectRect(gameobjects[i]->transform->realPosition.x(),gameobjects[i]->transform->realPosition.y(),rWidth,rHeight);
+
+        //Draw Selected Rect
+
+        if(gameobjects[i]==selectedGO)
+        {
+            QRect sObjectRect(objectRect.x()-5,objectRect.y()-5,objectRect.width()+10,objectRect.height()+10);
+
+            brush.setColor(QColor::fromRgb(0,0,0,0));
+            pen.setWidth(2);
+            pen.setColor(QColor::fromRgb(0,0,0,255));
+            pen.setStyle(Qt::PenStyle::DotLine);
+            painter.setBrush(brush);
+            painter.setPen(pen);
+
+            painter.drawRect(sObjectRect);
+        }
+
+        //Color Stuff
+        brush.setColor(gameobjects[i]->shape->fillColor);
+        pen.setWidth(gameobjects[i]->shape->penWidth);
+        pen.setColor(gameobjects[i]->shape->borderColor.rgb());
+        pen.setStyle(gameobjects[i]->shape->style);
+        painter.setBrush(brush);
+        painter.setPen(pen);
 
         switch (gameobjects[i]->shape->shape)
         {
@@ -111,7 +125,6 @@ void SceneView::paintEvent(QPaintEvent *event)
         }
         case TRIANGLE:
             break;
-
         }
     }
 }
@@ -128,30 +141,34 @@ SceneView::~SceneView()
     }
 
     gameobjects.clear();
+    selectedGO=nullptr;
 }
 
 void SceneView::CallToClean()
 {
-    QMessageBox msgBox;
-    msgBox.setText("You are going to open a new Scene");
-    msgBox.setInformativeText("Do you want to save your current scene?");
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
+    if(gameobjects.size()>0)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("You are going to open a new Scene");
+        msgBox.setInformativeText("Do you want to save your current scene?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
 
-    switch (ret)
-    {
-    case QMessageBox::Save:
-    {
-        SaveScene();
-        CleanScene();
-        break;
-    }
-    case QMessageBox::Discard:
-    {
-        CleanScene();
-        break;
-    }
+        switch (ret)
+        {
+        case QMessageBox::Save:
+        {
+            SaveScene();
+            CleanScene();
+            break;
+        }
+        case QMessageBox::Discard:
+        {
+            CleanScene();
+            break;
+        }
+        }
     }
 }
 
@@ -180,6 +197,7 @@ void SceneView::CleanScene()
     }
 
     gameobjects.clear();
+    selectedGO=nullptr;
 
     this->update();
 
@@ -267,14 +285,16 @@ void SceneView::SaveScene()
 
 void SceneView::LoadScene()
 {
-    CleanScene();
+    //QString path = QFileDialog::getOpenFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
+    QString path = QFileDialog::getOpenFileName(this,"Open Scene");
 
-    QString path = QFileDialog::getOpenFileName(this,"Open Scene",".",tr("Xml files(*.xml)"));
 
     if(path.isEmpty())
     {
         return;
     }
+
+    CleanScene();
 
     QFile file(path);
     file.open(QIODevice::ReadOnly);
@@ -349,7 +369,7 @@ void SceneView::LoadScene()
 
 void SceneView::mousePressEvent(QMouseEvent *event)
 {
-    GameObject* selectedGO=nullptr;
+    selectedGO=nullptr;
     int idx=-1;
 
     for(int i=0; i<gameobjects.size();++i)
@@ -372,6 +392,7 @@ void SceneView::mousePressEvent(QMouseEvent *event)
     if(selectedGO && idx!=-1)
     {
         emit onGoSelectedList(idx);
+        this->update();
     }
 }
 

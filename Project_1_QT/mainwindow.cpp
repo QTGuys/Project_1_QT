@@ -50,8 +50,6 @@ MainWindow::MainWindow(QWidget *parent)
    connect(uiMainWindow->actionSave_Scene,SIGNAL(triggered()),sceneView,SLOT(SaveScene()));
    connect(uiMainWindow->actionC,SIGNAL(triggered()),sceneView,SLOT(LoadScene()));
    connect(uiMainWindow->actionClose_Scene,SIGNAL(triggered()),sceneView,SLOT(CallToClean()));
-
-
 }
 
 MainWindow::~MainWindow()

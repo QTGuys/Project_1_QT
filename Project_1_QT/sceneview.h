@@ -19,7 +19,7 @@ public:
 
 public:
 
-    GameObject* currGO = nullptr;
+    GameObject* selectedGO = nullptr;
     std::vector<GameObject*> gameobjects;
 
     void CleanScene();
@@ -48,6 +48,7 @@ private:
 
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void DrawSelectedRect(QRect rect);
 
 };
 

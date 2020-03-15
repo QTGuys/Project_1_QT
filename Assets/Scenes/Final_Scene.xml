@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene>
+    <GameObject name="Background">
+        <Transform size="64.000000" posX="0.000000" posY="0.000000" scaleX="10.600000" scaleY="7.600000"/>
+        <Shape shape="1" fillColor_R="195" fillColor_G="247" fillColor_B="255" borderColor_R="0" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="0"/>
+    </GameObject>
+    <GameObject name="Floor">
+        <Transform size="64.000000" posX="0.000000" posY="453.000000" scaleX="10.700000" scaleY="1.000000"/>
+        <Shape shape="1" fillColor_R="227" fillColor_G="255" fillColor_B="217" borderColor_R="0" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="1"/>
+    </GameObject>
+    <GameObject name="Trunk">
+        <Transform size="64.000000" posX="-325.000000" posY="197.000000" scaleX="0.700000" scaleY="3.000000"/>
+        <Shape shape="1" fillColor_R="226" fillColor_G="177" fillColor_B="165" borderColor_R="219" borderColor_G="147" borderColor_B="121" penWidth="4" penStyle="1"/>
+    </GameObject>
+    <GameObject name="Leaves">
+        <Transform size="64.000000" posX="-328.000000" posY="-39.000000" scaleX="3.000000" scaleY="2.000000"/>
+        <Shape shape="0" fillColor_R="0" fillColor_G="255" fillColor_B="0" borderColor_R="0" borderColor_G="186" borderColor_B="0" penWidth="4" penStyle="1"/>
+    </GameObject>
+    <GameObject name="Block">
+        <Transform size="64.000000" posX="500.000000" posY="208.000000" scaleX="2.800000" scaleY="2.800000"/>
+        <Shape shape="1" fillColor_R="255" fillColor_G="255" fillColor_B="255" borderColor_R="0" borderColor_G="0" borderColor_B="0" penWidth="4" penStyle="2"/>
+    </GameObject>
+</Scene>
