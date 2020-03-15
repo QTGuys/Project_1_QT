@@ -4,6 +4,7 @@
 #include <QWidget>
 
 class GameObject;
+class QVector2D;
 
 class SceneView : public QWidget
 {
@@ -40,13 +41,21 @@ public slots:
     void SaveScene();
     void LoadScene();
     void CallToClean();
+    void onGoDeleted(GameObject* go);
+    void onAppClose();
 
 
 private:
 
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
     void DrawSelectedRect(QRect rect);
+
+private:
+    bool mouseClicked=false;
+    QVector2D* offset;
 
 };
 

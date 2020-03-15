@@ -101,6 +101,19 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QWidget" name="BColor" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>64</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
@@ -132,6 +145,19 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QWidget" name="FColor" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>64</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
@@ -140,7 +166,7 @@
        <item>
         <widget class="QComboBox" name="style">
          <property name="currentText">
-          <string>Solid</string>
+          <string>NoStroke</string>
          </property>
          <item>
           <property name="text">

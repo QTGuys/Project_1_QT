@@ -30,7 +30,7 @@ public slots:
     void onSelectFromView(int idx);
     void onNameChanged(std::vector<GameObject*> gameobjects);
     void onAddLoadItem(std::string name);
-
+    void onGoDeleted(GameObject* go);
 
 private:
     Ui::Hierarchy *ui;

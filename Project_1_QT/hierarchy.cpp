@@ -51,7 +51,9 @@ void Hierarchy::onRemoveEntity()
 
 void Hierarchy::onEntitySelected(int row)
 {
-    emit entitySelected(row);
+    if(ui->list_widget->selectedItems().count() != 0)
+        emit entitySelected(row);
+
 }
 
 void Hierarchy::onSelectFromView(int idx)
@@ -77,5 +79,18 @@ void Hierarchy::RemoveAllEntities()
 void Hierarchy::onAddLoadItem(std::string name)
 {
     ui->list_widget->addItem(name.c_str());
+}
+
+void Hierarchy::onGoDeleted(GameObject *go)
+{
+    for(int i = 0; i<ui->list_widget->count();i++)
+    {
+        if(ui->list_widget->item(i)->text() == go->name.c_str())
+        {
+            ui->list_widget->takeItem(i);
+            ui->list_widget->setCurrentItem(nullptr);
+            break;
+        }
+    }
 }
 

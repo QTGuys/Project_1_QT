@@ -3,6 +3,7 @@
 #include "componenttransform.h"
 #include "componentshape.h"
 
+#include <QApplication>
 #include <QPainter>
 #include <QBrush>
 #include <QPen>
@@ -17,6 +18,7 @@
 SceneView::SceneView(QWidget *parent) : QWidget(parent)
 {
     setAutoFillBackground(true);
+    offset=new QVector2D();
 }
 
 QSize SceneView::sizeHint() const
@@ -170,6 +172,49 @@ void SceneView::CallToClean()
         }
         }
     }
+}
+
+void SceneView::onGoDeleted(GameObject *go)
+{
+    for(int i = 0;i<gameobjects.size();i++)
+    {
+        if(gameobjects[i] == go)
+        {
+            gameobjects.erase(gameobjects.begin()+i);
+            break;
+        }
+
+    }
+}
+
+void SceneView::onAppClose()
+{
+    if(gameobjects.size()>0)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Closing App");
+        msgBox.setInformativeText("Do you want to save your current scene before closing?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+
+        switch (ret)
+        {
+        case QMessageBox::Save:
+        {
+            SaveScene();
+            CleanScene();
+            break;
+        }
+        case QMessageBox::Discard:
+        {
+            CleanScene();
+            break;
+        }
+        }
+    }
+
+    QApplication::quit();
 }
 
 void SceneView::CleanScene()
@@ -356,6 +401,13 @@ void SceneView::LoadScene()
 
 void SceneView::mousePressEvent(QMouseEvent *event)
 {
+    mouseClicked=true;
+
+    QVector2D screenCenter ={rect().width()/2.0f,rect().height()/2.0f};
+
+    offset->setX(event->x()-screenCenter.x());
+    offset->setY(event->y()-screenCenter.y());
+
     selectedGO=nullptr;
     int idx=-1;
 
@@ -380,6 +432,32 @@ void SceneView::mousePressEvent(QMouseEvent *event)
     {
         emit onGoSelectedList(idx);
         this->update();
+    }
+}
+
+void SceneView::mouseReleaseEvent(QMouseEvent *event)
+{
+    mouseClicked=false;
+}
+
+void SceneView::mouseMoveEvent(QMouseEvent *event)
+{
+    if(selectedGO && mouseClicked)
+    {
+        QVector2D screenCenter ={rect().width()/2.0f,rect().height()/2.0f};
+
+        QVector2D mousePos={(event->x()-screenCenter.x()),
+                             (event->y()-screenCenter.y())};
+
+        QVector2D newPos={selectedGO->transform->position.x()-(offset->x()-mousePos.x()),
+                          selectedGO->transform->position.y()-(offset->y()-mousePos.y())};
+
+        selectedGO->transform->position.setX(newPos.x());
+        selectedGO->transform->position.setY(newPos.y());
+        this->update();
+
+        offset->setX(mousePos.x());
+        offset->setY(mousePos.y());
     }
 }
 
