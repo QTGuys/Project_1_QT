@@ -39,6 +39,14 @@ Inspector::Inspector(QWidget* parent):QWidget (parent),uiTransform(new Ui::Trans
     connect(uiMesh->fg,SIGNAL(valueChanged(int)),this,SLOT(onFGChanged(int)));
     connect(uiMesh->fb, SIGNAL(valueChanged(int)),this,SLOT(onFBChanged(int)));
 
+    connect(uiMesh->numsr,SIGNAL(valueChanged(int)),this,SLOT(onSRChanged(int)));
+    connect(uiMesh->numsg, SIGNAL(valueChanged(int)),this,SLOT(onSGChanged(int)));
+    connect(uiMesh->numsb,SIGNAL(valueChanged(int)),this,SLOT(onSBChanged(int)));
+
+    connect(uiMesh->numfr,SIGNAL(valueChanged(int)),this,SLOT(onFRChanged(int)));
+    connect(uiMesh->numfg,SIGNAL(valueChanged(int)),this,SLOT(onFGChanged(int)));
+    connect(uiMesh->numfb, SIGNAL(valueChanged(int)),this,SLOT(onFBChanged(int)));
+
     connect(uiMesh->thickness, SIGNAL(valueChanged(double)),this,SLOT(onThicknessChanged(double)));
     connect(uiMesh->style, SIGNAL(currentIndexChanged(int)),this,SLOT(onStyleChanged(int)));
     connect(uiGeneralInspector->name_display, SIGNAL(editingFinished()),this,SLOT(onNameChanged()));
@@ -88,6 +96,14 @@ void Inspector::goSelected(GameObject* go)
     uiMesh->fr->setValue(go->shape->fillColor.red());
     uiMesh->fg->setValue(go->shape->fillColor.green());
     uiMesh->fb->setValue(go->shape->fillColor.blue());
+
+    uiMesh->numsr->setValue(go->shape->borderColor.red());
+    uiMesh->numsg->setValue(go->shape->borderColor.green());
+    uiMesh->numsb->setValue(go->shape->borderColor.blue());
+
+    uiMesh->numfr->setValue(go->shape->fillColor.red());
+    uiMesh->numfg->setValue(go->shape->fillColor.green());
+    uiMesh->numfb->setValue(go->shape->fillColor.blue());
     uiMesh->thickness->setValue(go->shape->penWidth);
     uiMesh->style->setCurrentIndex(go->shape->style);
     }
@@ -130,12 +146,16 @@ void Inspector::onRotationChanged(double v)
 void Inspector::onSRChanged(int v)
 {
     selected_go->shape->borderColor.setRed(v);
+    uiMesh->sr->setValue(v);
+    uiMesh->numsr->setValue(v);
     emit transformChanged();
     onBColorChanged();
 }
 
 void Inspector::onSGChanged(int v)
 {
+    uiMesh->sg->setValue(v);
+    uiMesh->numsg->setValue(v);
     selected_go->shape->borderColor.setGreen(v);
     emit transformChanged();
     onBColorChanged();
@@ -143,6 +163,8 @@ void Inspector::onSGChanged(int v)
 
 void Inspector::onSBChanged(int v)
 {
+    uiMesh->sb->setValue(v);
+    uiMesh->numsb->setValue(v);
     selected_go->shape->borderColor.setBlue(v);
     emit transformChanged();
     onBColorChanged();
@@ -150,6 +172,8 @@ void Inspector::onSBChanged(int v)
 
 void Inspector::onFRChanged(int v)
 {
+    uiMesh->fr->setValue(v);
+    uiMesh->numfr->setValue(v);
     selected_go->shape->fillColor.setRed(v);
     emit transformChanged();
     onFColorChanged();
@@ -157,14 +181,17 @@ void Inspector::onFRChanged(int v)
 
 void Inspector::onFGChanged(int v)
 {
+    uiMesh->fg->setValue(v);
+    uiMesh->numfg->setValue(v);
     selected_go->shape->fillColor.setGreen(v);
-    // selected_go->shape->fillColor.
     emit transformChanged();
     onFColorChanged();
 }
 
 void Inspector::onFBChanged(int v)
 {
+    uiMesh->fb->setValue(v);
+    uiMesh->numfb->setValue(v);
     selected_go->shape->fillColor.setBlue(v);
     emit transformChanged();
     onFColorChanged();
