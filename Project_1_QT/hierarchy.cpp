@@ -14,6 +14,7 @@ Hierarchy::Hierarchy(QWidget *parent) :
 //    connect(ui->add_entity, SIGNAL(clicked()),this,SLOT(onAddEntity()));
 //    connect(ui->remove_entity, SIGNAL(clicked()),this,SLOT(onRemoveEntity()));
       connect(ui->list_widget, SIGNAL(currentRowChanged(int)),this,SLOT(onEntitySelected(int)));
+      connect(ui->list_widget, SIGNAL(itemClicked(QListWidgetItem*)),this,SLOT(onEntityClicked()));
       connect(ui->create,SIGNAL(clicked()),this,SLOT(onAddEntity()));
 }
 
@@ -54,6 +55,12 @@ void Hierarchy::onEntitySelected(int row)
     if(ui->list_widget->selectedItems().count() != 0)
         emit entitySelected(row);
 
+}
+
+void Hierarchy::onEntityClicked()
+{
+       if(ui->list_widget->selectedItems().count() != 0)
+           emit entitySelected(ui->list_widget->currentRow());
 }
 
 void Hierarchy::onSelectFromView(int idx)

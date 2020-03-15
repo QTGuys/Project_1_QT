@@ -26,6 +26,7 @@ public slots:
     void onAddEntity();
     void onRemoveEntity();
     void onEntitySelected(int row);
+    void onEntityClicked();
     void RemoveAllEntities();
     void onSelectFromView(int idx);
     void onNameChanged(std::vector<GameObject*> gameobjects);

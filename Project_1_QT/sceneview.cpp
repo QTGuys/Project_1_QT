@@ -458,6 +458,7 @@ void SceneView::mouseMoveEvent(QMouseEvent *event)
 
         offset->setX(mousePos.x());
         offset->setY(mousePos.y());
+        emit onGoSelected(selectedGO);
     }
 }
 
