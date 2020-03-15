@@ -22,185 +22,206 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="shape_type">
        <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Type</string>
-         </property>
-        </widget>
+        <property name="text">
+         <string>Circle</string>
+        </property>
        </item>
        <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Stroke Color</string>
-         </property>
-        </widget>
+        <property name="text">
+         <string>Rectangle</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Stroke Color</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Stroke thickness</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Stroke style</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QSlider" name="fr">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="sliderPosition">
+            <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="fg">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="sliderPosition">
+            <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="fb">
+           <property name="maximum">
+            <number>255</number>
+           </property>
+           <property name="sliderPosition">
+            <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Fill Color</string>
+        <widget class="QWidget" name="FColor" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>64</width>
+           <height>16</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Stroke thickness</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Stroke style</string>
+         <property name="autoFillBackground">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
       </layout>
      </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QComboBox" name="shape_type">
+        <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <property name="text">
-           <string>Circle</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Rectangle</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QSpinBox" name="sr">
+          <widget class="QSlider" name="sb">
            <property name="maximum">
             <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="sg">
+          <widget class="QSlider" name="sr">
            <property name="maximum">
             <number>255</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="sb">
+          <widget class="QSlider" name="sg">
            <property name="maximum">
             <number>255</number>
            </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="BColor" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>64</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="autoFillBackground">
-            <bool>true</bool>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
           </widget>
          </item>
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <property name="spacing">
-          <number>6</number>
+        <widget class="QWidget" name="BColor" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>64</width>
+           <height>16</height>
+          </size>
          </property>
-         <property name="topMargin">
-          <number>0</number>
+         <property name="autoFillBackground">
+          <bool>true</bool>
          </property>
-         <item>
-          <widget class="QSpinBox" name="fr">
-           <property name="maximum">
-            <number>255</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="fg">
-           <property name="maximum">
-            <number>255</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="fb">
-           <property name="maximum">
-            <number>255</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QWidget" name="FColor" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>64</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="autoFillBackground">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QDoubleSpinBox" name="thickness"/>
-       </item>
-       <item>
-        <widget class="QComboBox" name="style">
-         <property name="currentText">
-          <string>NoStroke</string>
-         </property>
-         <item>
-          <property name="text">
-           <string>NoStroke</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Solid</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Dash</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Dot</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>DashDot</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>DashDotDot</string>
-          </property>
-         </item>
         </widget>
        </item>
       </layout>
+     </item>
+     <item row="4" column="1">
+      <widget class="QDoubleSpinBox" name="thickness"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QComboBox" name="style">
+       <property name="currentText">
+        <string>NoStroke</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>NoStroke</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Solid</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dash</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dot</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DashDot</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>DashDotDot</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Fill Color</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
