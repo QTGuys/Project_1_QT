@@ -41,7 +41,7 @@ public slots:
     void LoadScene();
     void CallToClean();
     void onGoDeleted(GameObject* go);
-
+    void onAppClose();
 
 
 private:

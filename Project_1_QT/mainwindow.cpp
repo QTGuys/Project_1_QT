@@ -50,6 +50,9 @@ MainWindow::MainWindow(QWidget *parent)
    connect(uiMainWindow->actionSave_Scene,SIGNAL(triggered()),sceneView,SLOT(SaveScene()));
    connect(uiMainWindow->actionC,SIGNAL(triggered()),sceneView,SLOT(LoadScene()));
    connect(uiMainWindow->actionClose_Scene,SIGNAL(triggered()),sceneView,SLOT(CallToClean()));
+   connect(uiMainWindow->actionClose_App,SIGNAL(triggered()),this,SLOT(onAppClose()));
+
+   connect(this,SIGNAL(appClose()),sceneView,SLOT(onAppClose()));
 }
 
 MainWindow::~MainWindow()
@@ -58,5 +61,10 @@ MainWindow::~MainWindow()
     delete hierarchy;
     delete inspector;
     delete sceneView;
+}
+
+void MainWindow::onAppClose()
+{
+    emit appClose();
 }
 

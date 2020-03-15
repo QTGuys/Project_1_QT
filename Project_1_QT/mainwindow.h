@@ -15,7 +15,10 @@ class MainWindow : public QMainWindow
 public:
    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+signals:
+    void appClose();
+public slots:
+    void onAppClose();
 private:
     Ui::MainWindow *uiMainWindow;
 

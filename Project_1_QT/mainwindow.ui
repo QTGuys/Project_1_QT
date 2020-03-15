@@ -20,14 +20,13 @@
      <x>0</x>
      <y>0</y>
      <width>999</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCreate_Scene">
     <property name="title">
      <string>Scene</string>
     </property>
-    <addaction name="actionCreate_Scene"/>
     <addaction name="actionC"/>
     <addaction name="actionSave_Scene"/>
    </widget>
@@ -35,18 +34,26 @@
     <property name="title">
      <string>Exit</string>
     </property>
+    <addaction name="actionClose_App"/>
+    <addaction name="actionClose_Scene"/>
    </widget>
    <addaction name="menuCreate_Scene"/>
    <addaction name="menuExit"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QDockWidget" name="dock_hierarchy">
+   <property name="windowTitle">
+    <string>Hierarchy</string>
+   </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents"/>
   </widget>
   <widget class="QDockWidget" name="dock_inspector">
+   <property name="windowTitle">
+    <string>Inspector</string>
+   </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
@@ -62,16 +69,10 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionCreate_Scene"/>
    <addaction name="actionC"/>
    <addaction name="actionSave_Scene"/>
    <addaction name="actionClose_Scene"/>
   </widget>
-  <action name="actionCreate_Scene">
-   <property name="text">
-    <string>Create Scene</string>
-   </property>
-  </action>
   <action name="actionC">
    <property name="icon">
     <iconset resource="Icons.qrc">
@@ -81,15 +82,6 @@
     <string>Open Scene</string>
    </property>
   </action>
-  <action name="actionClose_Scene">
-   <property name="icon">
-    <iconset resource="Icons.qrc">
-     <normaloff>:/icons/New</normaloff>:/icons/New</iconset>
-   </property>
-   <property name="text">
-    <string>Close Scene</string>
-   </property>
-  </action>
   <action name="actionSave_Scene">
    <property name="icon">
     <iconset resource="Icons.qrc">
@@ -97,6 +89,24 @@
    </property>
    <property name="text">
     <string>Save Scene</string>
+   </property>
+  </action>
+  <action name="actionClose_App">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/Close</normaloff>:/icons/Close</iconset>
+   </property>
+   <property name="text">
+    <string>Close App</string>
+   </property>
+  </action>
+  <action name="actionClose_Scene">
+   <property name="icon">
+    <iconset resource="Icons.qrc">
+     <normaloff>:/icons/New</normaloff>:/icons/New</iconset>
+   </property>
+   <property name="text">
+    <string>Close Scene</string>
    </property>
   </action>
  </widget>

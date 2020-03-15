@@ -3,6 +3,7 @@
 #include "componenttransform.h"
 #include "componentshape.h"
 
+#include <QApplication>
 #include <QPainter>
 #include <QBrush>
 #include <QPen>
@@ -183,6 +184,36 @@ void SceneView::onGoDeleted(GameObject *go)
         }
 
     }
+}
+
+void SceneView::onAppClose()
+{
+    if(gameobjects.size()>0)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Closing App");
+        msgBox.setInformativeText("Do you want to save your current scene before closing?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
+
+        switch (ret)
+        {
+        case QMessageBox::Save:
+        {
+            SaveScene();
+            CleanScene();
+            break;
+        }
+        case QMessageBox::Discard:
+        {
+            CleanScene();
+            break;
+        }
+        }
+    }
+
+    QApplication::quit();
 }
 
 void SceneView::CleanScene()
