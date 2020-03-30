@@ -53,6 +53,13 @@ MainWindow::MainWindow(QWidget *parent)
    connect(uiMainWindow->actionClose_App,SIGNAL(triggered()),this,SLOT(onAppClose()));
 
    connect(this,SIGNAL(appClose()),sceneView,SLOT(onAppClose()));
+
+   //set system theme to icons
+   uiMainWindow->actionClose_App->setIcon(QIcon::fromTheme("dialog-close"));
+   uiMainWindow->actionClose_Scene->setIcon(QIcon::fromTheme("document-close"));
+   uiMainWindow->actionSave_Scene->setIcon(QIcon::fromTheme("document-save"));
+   uiMainWindow->actionC->setIcon(QIcon::fromTheme("document-open"));
+
 }
 
 MainWindow::~MainWindow()
